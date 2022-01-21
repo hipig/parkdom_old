@@ -12,9 +12,9 @@
             </div>
             <div class="flex-1 min-h-0 flex items-center justify-center py-5 px-4 lg:px-8 xl:px-12">
                 <div class="space-y-20 w-full">
-                    <div class="flex flex-col items-center space-y-8">
-                        <h1 class="text-5xl md:text-6xl font-bold bg-indigo-600 text-white px-4 py-1 rounded-md">{{ lang('domain.for_sale') }}</h1>
-                        <h3 class="text-6xl sm:text-7xl md:text-8xl font-bold text-gray-900">{{ $domain->domain }}</h3>
+                    <div class="text-center space-y-8">
+                        <h1 class="inline-block text-5xl md:text-6xl font-bold bg-indigo-600 text-white px-4 py-1 rounded-md">{{ lang('domain.for_sale') }}</h1>
+                        <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-gray-900 break-words">{{ $domain->domain }}</div>
                         @if($domain->price)
                             <div class="flex items-center text-4xl space-x-4"><span>Estimated value</span> <span class="text-3xl px-4 py-1 bg-red-500 text-white font-semibold rounded">{{ $domain->format_price }}</span></div>
                         @endif
@@ -51,24 +51,28 @@
                 </div>
             </div>
             <div class="py-4 px-6">
-                <div class="grid grid-cols-3 text-md">
-                        <div class="flex items-center space-x-1">
-                            @if($contactSetting->phone)
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                                </svg>
-                                <span>{{ $contactSetting->phone }}</span>
-                            @endif
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-4 lg:space-y-0 text-md justify-center">
+                    <div class="col-span-2">
+                        <div class="grid grid-cols-2">
+                            <div class="flex items-center space-x-1">
+                                @if($contactSetting->phone)
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                    </svg>
+                                    <span>{{ $contactSetting->phone }}</span>
+                                @endif
+                            </div>
+                            <div class="flex items-center justify-end lg:justify-center space-x-1">
+                                @if($contactSetting->email)
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <a href="mailto:{{ $contactSetting->email }}" class="hover:text-indigo-500 hover:opacity-90">{{ $contactSetting->email }}</a>
+                                @endif
+                            </div>
                         </div>
-                        <div class="flex items-center justify-center space-x-1">
-                            @if($contactSetting->email)
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                                </svg>
-                                <a href="mailto:{{ $contactSetting->email }}" class="hover:text-indigo-500 hover:opacity-90">{{ $contactSetting->email }}</a>
-                            @endif
-                        </div>
-                    <div class="flex items-center justify-end space-x-1" x-data>
+                    </div>
+                    <div class="flex items-center justify-start lg:justify-end space-x-1" x-data>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd" />
                         </svg>
@@ -104,7 +108,7 @@
                                             <p class="text-sm text-red-500" x-text-="errors.name[0]"></p>
                                         </template>
                                     </div>
-                                    <div class="grid grid-cols-2 gap-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div class="space-y-1">
                                             <div class="relative">
                                                 <input type="text" x-model="form.email" class="w-full block placeholder-gray-400 border border-gray-200 rounded pl-12 pr-10 py-3 leading-6 text-lg focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" placeholder="{{ lang('domain.offer_email_placeholder') }}">
@@ -267,25 +271,25 @@
                     </button>
                 </div>
             </div>
-            <div class="p-5 lg:p-6 flex-grow w-full">
+            <div class="p-5 lg:p-6 flex-grow w-full space-y-6">
                 <div class="space-y-6">
                     <div class="space-y-1">
                         <label for="contact_name" class="font-medium text-gray-900">{{ lang('domain.contact_name') }}</label>
-                        <input id="contact_name" class="w-full block border border-gray-200 rounded px-3 py-2 leading-6 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="text" placeholder="{{ lang('domain.contact_name_placeholder') }}" />
+                        <input id="contact_name" x-model="form.name" class="w-full block border border-gray-200 rounded px-3 py-2 leading-6 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="text" placeholder="{{ lang('domain.contact_name_placeholder') }}" />
                         <template x-if="errors.name && errors.name.length > 0" hidden>
                             <p class="text-sm text-red-500" x-text-="errors.name[0]"></p>
                         </template>
                     </div>
                     <div class="space-y-1">
                         <label for="contact_email" class="font-medium text-gray-900">{{ lang('domain.contact_email') }}</label>
-                        <input id="contact_email" class="w-full block border border-gray-200 rounded px-3 py-2 leading-6 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="text" placeholder="{{ lang('domain.contact_email_placeholder') }}" />
+                        <input id="contact_email" x-model="form.email" class="w-full block border border-gray-200 rounded px-3 py-2 leading-6 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="text" placeholder="{{ lang('domain.contact_email_placeholder') }}" />
                         <template x-if="errors.email && errors.email.length > 0" hidden>
                             <p class="text-sm text-red-500" x-text-="errors.email[0]"></p>
                         </template>
                     </div>
                     <div class="space-y-1">
                         <label for="contact_content" class="font-medium text-gray-900">{{ lang('domain.contact_content') }}</label>
-                        <textarea id="contact_content" class="w-full block border border-gray-200 rounded px-3 py-2 leading-6 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" rows="4" placeholder="{{ lang('domain.contact_content_placeholder') }}"></textarea>
+                        <textarea id="contact_content" x-model="form.content" class="w-full block border border-gray-200 rounded px-3 py-2 leading-6 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" rows="4" placeholder="{{ lang('domain.contact_content_placeholder') }}"></textarea>
                         <template x-if="errors.content && errors.content.length > 0" hidden>
                             <p class="text-sm text-red-500" x-text-="errors.content[0]"></p>
                         </template>
@@ -296,6 +300,75 @@
                         </button>
                     </div>
                 </div>
+                @if(!empty(array_filter([$contactSetting->facebook, $contactSetting->twitter, $contactSetting->vk, $contactSetting->skype, $contactSetting->whatsapp])))
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <span class="text-sm font-medium mr-3 text-gray-400 uppercase">{{ lang('domain.focus_us') }}</span>
+                            <span aria-hidden="true" class="flex-grow bg-gray-200 rounded h-px"></span>
+                        </div>
+                        <ul class="grid grid-cols-2 gap-5">
+                            @if($contactSetting->facebook)
+                                <li>
+                                    <a class="flex items-center space-x-2 rounded-full overflow-hidden" href="{{ $contactSetting->facebook }}" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                                        </svg>
+                                        <span>Facebook</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if($contactSetting->twitter)
+                                <li>
+                                    <a class="flex items-center space-x-2 rounded-full overflow-hidden" href="{{ $contactSetting->twitter }}" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                                        </svg>
+                                        <span>Twitter</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if($contactSetting->vk)
+                                <li>
+                                    <a class="flex items-center space-x-2 rounded-full overflow-hidden" href="{{ $contactSetting->vk }}" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M10 6h2v12c-4.5 -1 -8 -6.5 -9 -12" />
+                                            <path d="M20 6c-1 2 -3 5 -5 6h-3" />
+                                            <path d="M20 18c-1 -2 -3 -5 -5 -6" />
+                                        </svg>
+                                        <span>VK</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if($contactSetting->skype)
+                                <li>
+                                    <a class="flex items-center space-x-2 rounded-full overflow-hidden" href="{javascript:;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M12 3a9 9 0 0 1 8.603 11.65a4.5 4.5 0 0 1 -5.953 5.953a9 9 0 0 1 -11.253 -11.253a4.5 4.5 0 0 1 5.953 -5.954a8.987 8.987 0 0 1 2.65 -.396z" />
+                                            <path d="M8 14.5c.5 2 2.358 2.5 4 2.5c2.905 0 4 -1.187 4 -2.5c0 -1.503 -1.927 -2.5 -4 -2.5s-4 -.997 -4 -2.5c0 -1.313 1.095 -2.5 4 -2.5c1.642 0 3.5 .5 4 2.5" />
+                                        </svg>
+                                        <span>Skype: {{ $contactSetting->skype }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if($contactSetting->whatsapp)
+                                <li>
+                                    <a class="flex items-center space-x-2 rounded-full overflow-hidden" href="javascript:;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-6 h-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                                            <path d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />
+                                        </svg>
+                                        <span>Whatsapp: {{ $contactSetting->whatsapp }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

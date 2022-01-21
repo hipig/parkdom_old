@@ -16,7 +16,7 @@ return [
     'offer_email' => 'Email',
     'offer_email_placeholder' => 'email@example.com',
     'offer_phone' => 'Phone',
-    'offer_phone_placeholder' => '1234 000 000',
+    'offer_phone_placeholder' => '+229 69488999',
     'offer_price' => 'Offer Price',
     'offer_price_placeholder' => '0.00',
     'offer_captcha' => 'Captcha code',
@@ -26,6 +26,7 @@ return [
     'offer_submit' => 'Submit Offer',
     'offer_submit_success_tips' => 'Thank you, your message is submitted successfully!',
     'offer_buy_links' => 'Buy Links',
+    'focus_us' => 'Focus on us',
 
     'contact_name' => 'Name',
     'contact_name_placeholder' => 'John',

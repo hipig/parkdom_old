@@ -16,7 +16,7 @@ return [
     'offer_email' => '邮箱地址',
     'offer_email_placeholder' => 'email@example.com',
     'offer_phone' => '手机号码',
-    'offer_phone_placeholder' => '123 0000 0000',
+    'offer_phone_placeholder' => '+229 69488999',
     'offer_price' => '出价',
     'offer_price_placeholder' => '0.00',
     'offer_captcha' => '验证码',
@@ -26,6 +26,7 @@ return [
     'offer_submit' => '提交报价',
     'offer_submit_success_tips' => '报价提交成功！',
     'offer_buy_links' => '购买链接',
+    'focus_us' => '关注我们',
 
     'contact_name' => '昵称',
     'contact_name_placeholder' => '张三',
